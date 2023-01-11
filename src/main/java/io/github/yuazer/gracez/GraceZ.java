@@ -9,11 +9,20 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
+import javax.swing.*;
 
 
 @Mod("gracez")
+//模组主类注解
 @Mod.EventBusSubscriber
+//模组方法监听类注解
 public class GraceZ {
+    @SubscribeEvent
+    public static void onInit(FMLClientSetupEvent event){
+        initWindow();
+    }
     @SubscribeEvent
     public static void onJoin(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();
@@ -28,5 +37,11 @@ public class GraceZ {
             player.teleportTo(vec.x,vec.y,vec.z);
             ZUtils.sendMsg(player,"§a飞咯飞咯~");
         }
+    }
+    public static void initWindow(){
+        JFrame jFrame = new JFrame("GraceZ Mod[1.16.5]");
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setSize(400,500);
+        jFrame.setVisible(true);
     }
 }
