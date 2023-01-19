@@ -1,5 +1,6 @@
 package io.github.yuazer.gracez;
 
+import io.github.yuazer.gracez.GuiSetting.Window;
 import io.github.yuazer.gracez.Registry.ItemRegistry;
 import io.github.yuazer.gracez.Utils.ZUtils;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,6 +13,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import javax.swing.*;
 
 
 @Mod("gracez")
@@ -27,7 +30,7 @@ public class GraceZ {
     }
     @SubscribeEvent
     public static void onInit(FMLLoadCompleteEvent event) {
-
+        System.out.println("init咯咯咯");
     }
 
     @SubscribeEvent
@@ -45,6 +48,15 @@ public class GraceZ {
             Vector3d vec = rtr.getLocation();
             player.teleportTo(vec.x, vec.y, vec.z);
             ZUtils.sendMsg(player, "§a飞咯飞咯~");
+            initWindow();
         }
+    }
+    public static void initWindow(){
+//        JFrame jFrame = new JFrame("GraceZ Mod[1.16.5]");
+//        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        jFrame.setSize(400,500);
+//        jFrame.setVisible(true);
+        Window window = Window.get();
+        window.run();
     }
 }
