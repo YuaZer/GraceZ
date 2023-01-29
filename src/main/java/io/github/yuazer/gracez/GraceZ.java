@@ -14,8 +14,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import javax.swing.*;
-
 
 @Mod("gracez")
 //模组主类注解
@@ -24,10 +22,12 @@ import javax.swing.*;
 public class GraceZ {
     public static final String MOD_ID = "gracez";
     public static final String MOD_AUTHOR = "YuaZer";
-    public GraceZ(){
+
+    public GraceZ() {
         //FMLJavaModLoadingContext.get().getModEventBus()   获取MOD总线
         ItemRegistry.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
+
     @SubscribeEvent
     public static void onInit(FMLLoadCompleteEvent event) {
         System.out.println("init咯咯咯");
@@ -51,12 +51,10 @@ public class GraceZ {
             initWindow();
         }
     }
-    public static void initWindow(){
-//        JFrame jFrame = new JFrame("GraceZ Mod[1.16.5]");
-//        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        jFrame.setSize(400,500);
-//        jFrame.setVisible(true);
-        Window window = Window.get();
+
+    public static void initWindow() {
+        Window window = new Window(600, 600, "GraceZ Mod [1.16.5]");
         window.run();
+
     }
 }
